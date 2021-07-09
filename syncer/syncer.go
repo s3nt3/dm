@@ -84,8 +84,7 @@ var (
 
 	maxDMLConnectionDuration, _ = time.ParseDuration(maxDMLConnectionTimeout)
 
-	adminQueueName     = "admin queue"
-	defaultBucketCount = 8
+	adminQueueName = "admin queue"
 )
 
 // BinlogType represents binlog sync type.
