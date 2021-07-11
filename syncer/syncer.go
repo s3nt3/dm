@@ -1347,6 +1347,8 @@ func (s *Syncer) syncDML(tctx *tcontext.Context, queueBucket string, db *interle
 		})
 		return db.executeSQL(tctx, i%2 == 0, queries, args...)
 	}
+	ticker := time.NewTicker(waitTime)
+	defer ticker.Stop()
 
 	var err error
 	var affect int
@@ -1374,7 +1376,7 @@ func (s *Syncer) syncDML(tctx *tcontext.Context, queueBucket string, db *interle
 				clearF()
 			}
 
-		case <-time.After(waitTime):
+		case <-ticker.C:
 			if len(jobs) > 0 {
 				affect, err = executeSQLs()
 				if err != nil {
