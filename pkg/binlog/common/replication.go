@@ -31,7 +31,7 @@ var (
 // SetDefaultReplicationCfg sets some default value for BinlogSyncerConfig
 // Note: retryCount should be greater than 0, set retryCount = 1 if you want to disable retry sync.
 func SetDefaultReplicationCfg(cfg *replication.BinlogSyncerConfig, retryCount int) {
-	cfg.UseDecimal = true // must set true. ref: https://github.com/pingcap/tidb-enterprise-tools/pull/272
+	cfg.UseDecimal = false // must set true. ref: https://github.com/pingcap/tidb-enterprise-tools/pull/272
 	cfg.VerifyChecksum = true
 	cfg.MaxReconnectAttempts = retryCount
 	if retryCount == 1 {
