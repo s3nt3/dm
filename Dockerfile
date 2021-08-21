@@ -23,7 +23,7 @@ RUN apk update && apk add bash
 
 RUN make dm-worker dm-master dmctl
 
-FROM alpine:3.10
+FROM alpine:latest
 
 COPY --from=builder /go/src/github.com/pingcap/dm/bin/dm-worker /dm-worker
 COPY --from=builder /go/src/github.com/pingcap/dm/bin/dm-master /dm-master
